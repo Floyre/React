@@ -1,0 +1,113 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+a, p {
+  margin:0%;
+  width: 0px;
+  height: 0px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  flex-direction: row;
+  background-color: rgb(128,128,128,0.5);
+  backdrop-filter: blur(22px);
+  width: 1400px;
+  height: 50px;
+  border-radius:10px;
+  
+  position: fixed;
+  top: 50px;
+  z-index: 1030; /* to prevent the navbar getting covered up by other content */
+  justify-content: space-between;
+}
+
+.header-align-left, .header-align-right{
+  display: flex;
+  align-items: center;
+}
+
+.c-Pal-Logo{
+  width: 150px;
+  height: 50px;
+}
+
+.Icon-Image{
+  display: flex;
+  justify-content:center; 
+  align-items : center;
+  width: 45px;
+  height: 50px;
+  margin-left: 3px;
+  object-fit: cover;
+}
+
+.c-Icon{
+  width: 38px;
+  height: 38px;
+  margin: 5px;
+  border-radius:15%;
+  transition: transform 0.1s ease;
+}
+
+.c-Icon:hover{
+  transform: scale(1.15);
+}
+
+.header-button-container{
+  display: flex;
+  justify-content:center; 
+  align-items : center;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  transition: text-shadow 0.1s ease;
+}
+
+.header-button-container:hover{
+  transform: scale(1.1);
+  text-shadow: 4px 2px 2px black;
+}
+
+.App-header {
+  background-color: red;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-image: url("./resource/back.jpeg");
+  background-size: cover;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
