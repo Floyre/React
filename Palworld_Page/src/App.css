@@ -1,5 +1,22 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: relative;
+}
+
+.App-Background{
+  position: absolute;
+  background-image: url('./resource/full-back.jpg');
+  background-size: cover;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
 }
 
 .App-logo {
@@ -15,8 +32,6 @@
 
 a, p {
   margin:0%;
-  width: 0px;
-  height: 0px;
 }
 
 .header {
@@ -41,7 +56,12 @@ a, p {
   align-items: center;
 }
 
+.header-align-right{
+  margin-right:5px;
+}
+
 .c-Pal-Logo{
+  margin-left:5px;
   width: 150px;
   height: 50px;
 }
@@ -86,28 +106,128 @@ a, p {
   text-shadow: 4px 2px 2px black;
 }
 
-.App-header {
-  background-color: red;
-  min-height: 100vh;
+.Top-Content-Container {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('./resource/back.jpg');
+  background-size: 100% 100%;
+}
+
+.Title-Content-Background{
+  width: 100%;
+  height: 100%;
+  margin-top: 150px;
+  position: relative;
+}
+
+.Title-Content-Container{
+  flex-wrap: wrap;
+  position: absolute;
+  width: 40%;
+  height: auto;
+  font-size: 50px;
+  align-self: flex-start; /* 타이틀 콘텐츠 컨테이너를 왼쪽으로 정렬 */
+  margin-left: 8%; /* 레이아웃 요구사항에 맞게 이 값을 조정하세요 */
+  margin-bottom: 3%;
+  color:white;
+  text-align: left;
+}
+
+#Sub-Title{
+  width: 50rem;
+  font-size: 1.5rem;
+}
+
+.Body-Content-Container {
+  display: flex;
+  margin-top:5vh;
+  flex-direction: row;
+  width: 1400px;
+  height: 800px;
+  align-items: stretch;
+}
+
+.Big-Content{
+  display: flex;
+  flex-direction: column-reverse;
+  width: 80%;
+  height: 100%;
+  position: relative;
+  margin-right: 1%;
+}
+
+.Big-Content-Thumbnail{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 5px 0px 0px 0px;
+}
+
+.Big-Content-Title{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 5%;
+  width: 100%;
+  font-size: 25px;
+}
+
+.Side-Content-Container{
+  width: 50%;
+  height:100%;
+}
+
+.Side-Content-Top{
+  width: 100%;
+  height: 70%;
+  position: relative;
+}
+
+.Side-Content-Thumbnail{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.Side-Content-Title{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  background-image: url("./resource/back.jpeg");
-  background-size: cover;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 20%;
+  font-size: 30px;
+  margin-bottom: 3%;
 }
 
-.App-link {
-  color: #61dafb;
+#top_{
+  font-size: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Side-Content-Bottom{
+  width: 100%;
+  height: 28%;
+  margin-top: 3%;
+  background-color: rgb(153, 255, 0);
+}
+
+footer{
+  display:flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 150px;
+  margin-top: 5vh;
+  font-size:50%;
+  justify-content: center;
+  align-items: center;
 }
