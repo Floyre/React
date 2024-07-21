@@ -1,60 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-    </head>
     <body>
         <div id="root"></div>
     </body>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script> <!--React.Js는 Application이 Interactive 하게 만들어주는 Library-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script> <!--React-Dom은 모든 React Element들을 HTML Body에 둘 수 있게 해준다-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!--JSX로 변환해주는 라이브러리-->
+    <!--createElement("")안에는 생성하고자 하는 HTML 태그와 동일한 이름이여야 함-->
+    <!--ReactDOM.render의 의미는 React Element를 가지고 HTML로 만들어 배치한다는 것-->
+    <!--HTML 기능인 document.getElementById("root")를 통해 <body> 태그에 있는 div 를 JS에 전달-->
+    <!--ReactDOM.render(span,root) "span"을 "root"안에 Rendering-->
+    <!--createElement("span",{id:"sexy-span"}) createElement 두번째 속성으로 여러가지 id나 class같은거 설정 가능, 세번째 속성으로는 항목의 content-->
+    <!--const 의 이름은 꼭 HTML의 tag 이름과 일치할 필요 X-->
+    <!--Second Property로 EventListener를 사용할 수 있다-->
+    <!--Second Property는 대괄호로 한번만 감싸주면 됨, 그러나 style 같은거 사용할때는 한번 더 감싸주기-->
+    <!--React.createElement는 보통 사용하지 않음, 또한 그 안에 들어가는 Property의 순서도 기억할 필요가 없음-->
+    <!--Arrow Function ()=> 말 그대로 함수 내용을 그대로 리턴하는건데 앞에만 붙혀서 가독성 좋게-->
+    <!--Container에 들어갈 나만의 Componet의 첫글자는 무조껀 대문자가 되어야 한다. 대문자가 아니면 해석할때 그냥 HTML Tag로 해석하기 때문-->
+    <!--여러개로 쪼개서 하나의 Container에 조립해서 body에서 출력하는 느낌으로-->
+    <!--변수를 삽입할 때 에는 단순히 대괄호를 열어주고 변수 이름을 삽입하면 된다-->
+    <!-- <button onClick={countUp}> 버튼에 이벤트리스너를 추가하고 그 이벤트리스너에 동작하는 함수를 추가하는 방법-->
+    <!-- JS에서는 Array를 변수에 할당할때 apple = fruit[0] 이런 방식이 아니라 아에 한방에 [apple, banana] = fruit 와 같이 배열의 위치를 한방에 할당해 줄 수 있음-->
+    <!-- Modifier를 사용하면 component를 자동적으로 refresh 해주는게 React만의 장점. 컴포넌트 전체를 refresh 하는 것 같아보이지만 사실은 바뀌는 부분만 refresh.-->
+    <!-- React.useState(최초값), 두개의 값이 담긴 Array 를 제공 [할당된 값, 그리고 Modifier]-->
+    <!-- State가 바뀌면 렌더링이 실행됨 / 변경된 값을 따로 출력하기 위해 렌더링 함수를 지정해 줄 필요 없이 자동으로 된다는게 인상적인 부분-->
     <script type="text/babel">
         const root = document.getElementById("root");
-        const Title = () => (
-            <h3 id="title" onMouseEnter={()=>console.log("Mouse Enter")}>
-                Hello
-            </h3>
-        );
-        /*
-        const h3 = React.createElement("h3", //First Argument - Html Tag
-            {
-                id:"sexy-span",
-                style:{color:"red"},
-                onMouseEnter: () => console.log("mouse Enter"),
-            }, //Second Argument - Html Property
-            "Hello"); //Third Argument - Html Content
-        */
-        const Button = () => (
-            <button
-                style={{
-                    backgroundColor: "tomato",
-                }}
-                onClick={()=>console.log("Im Clicked")}
-            >
-                Click Me
-            </button>
-        );
-
-        /*
-        const btn = React.createElement(
-            "button",
-            {
-                onClick: () => console.log("click"),
-                style: {
-                    backgroundColor:"tomato"
-                }
-            },
-            "Click Me"
-        );
-        */
-        const container = () => (
-            <div>
-                <Title />
-                <Button />
-            </div>
-        );
-        //const container = React.createElement("div", null, [Title, Button]); //Two Component
-        ReactDOM.render(<container />, <root />);
+        //const Title = () => (<h3 id="title" onMouseEtner={()=> console.log("Mouse Enter")}>Hello I'm a title</h3>);
+        //const Button = () => (<button style={{backgroundColor: "tomato"}} onClick={() => console.log("I'm Clicked")}>Click Me</button>);
+        //const h3 = React.createElement("h3", {onMouseEnter:()=> console.log("Mouse Enter")}, "Hello I'm a span");
+        //const btn = React.createErement("button", {id : "button", onClick:()=> console.log("I'm Clicked"),style:{backgroundColor:"tomato"}}, "Click Me");
+        function App() { 
+            const [counter, modifier] = React.useState(0);
+            const onClick = () => {
+                //modifier(counter+1); //직접 값 전달 방식
+                modifier((current) => current+1); //함수형 업데이트 방식 - 항상 최신 상태 값을 기반으로 상태를 업데이트하므로, 비동기 처리와 여러 상태 업데이트 요청이 있는 상황에서도 정확한 결과를 보장합니다.
+            };
+            return(
+                <div>
+                    <h3>Total Clicks: {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            );
+        }
+        //const container = React.createElement("div", null, [title, button]);
+        ReactDOM.render(<App />,root);
     </script>
 </html>
